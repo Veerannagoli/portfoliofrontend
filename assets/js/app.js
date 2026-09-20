@@ -82,7 +82,7 @@ whatsappButtons.forEach(button => {
       `Subject: ${data.subject || "-"}`,
       "",
       `Message: ${data.message || "-"}`
-    ].join("\\n");
+    ].join("\n");
 
     window.open(`https://wa.me/917815821117?text=${encodeURIComponent(text)}`, "_blank", "noopener,noreferrer");
   });
