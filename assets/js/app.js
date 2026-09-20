@@ -61,6 +61,33 @@ form?.addEventListener("submit", async e => {
   btn.innerHTML = "Send Enquiry ↗";
 });
 
+// WhatsApp enquiry: include the form details in the WhatsApp message.
+const whatsappButtons = document.querySelectorAll(".whatsapp");
+whatsappButtons.forEach(button => {
+  button.addEventListener("click", e => {
+    const form = document.getElementById("form");
+    if (!form) return;
+
+    const data = Object.fromEntries(new FormData(form).entries());
+    const hasDetails = data.name || data.email || data.phone || data.subject || data.message;
+    if (!hasDetails) return; // normal WhatsApp link when the form is empty
+
+    e.preventDefault();
+    const text = [
+      "Hello Veeranna, I would like to send an enquiry.",
+      "",
+      `Name: ${data.name || "-"}`,
+      `Email: ${data.email || "-"}`,
+      `Phone: ${data.phone || "-"}`,
+      `Subject: ${data.subject || "-"}`,
+      "",
+      `Message: ${data.message || "-"}`
+    ].join("\\n");
+
+    window.open(`https://wa.me/917815821117?text=${encodeURIComponent(text)}`, "_blank", "noopener,noreferrer");
+  });
+});
+
 const modal = document.getElementById("resumeModal");
 document.getElementById("resumeBtn")?.addEventListener("click", () => {
   modal.classList.add("open");
