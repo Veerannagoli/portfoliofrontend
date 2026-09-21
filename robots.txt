@@ -1,3 +1,4 @@
 User-agent: *
 Allow: /
-Sitemap: https://veerannagoli.github.io/sitemap.xml
+
+Sitemap: https://veeranna-portfolio.netlify.app/sitemap.xml
